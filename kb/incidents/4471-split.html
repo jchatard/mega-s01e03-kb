@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../_app/immutable/entry/start.CNkjICaV.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/payload.DSmR2FwN.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CRzLMJPS.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BTn7YFaq.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BCPXOG7W.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BLR7M8g-.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.NURCjQaW.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.C9KfiiPz.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DK3Fl9T5.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.DQE7XRkX.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BfsrM_32.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BTPwLomz.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CVBzP17p.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BIy4WKJS.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 split · three problems, three tickets · support kb</title>
+		<link href="../../_app/immutable/assets/runbook.COyw0cbZ.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/Callout.AbLv9dM_.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/_page.B60WaBbo.css" rel="stylesheet">
+  </head>
+  <body>
+    <div style="display: contents"><!--[--><!--[--><!--[0--><!--[--><!--[--><!--[-1--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 split · three problems, three tickets</h1> <p class="meta svelte-e2jw2j"><span>owner <b>jchatard</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> says one issue, one fix queued. Its reports say otherwise. The desk
+merged on subject line (<a href="/kb/decisions/0001-dedupe-by-subject">decision 0001</a>), so nobody read the
+bodies. Read by what they show, they are three problems, and the queued parser fix closes only one.</p> <aside class="warn svelte-17bri61"><!---->#4471 is not one bug. Two of these problems survive the parser fix. Each now has its own ticket.<!----></aside><!----> <h2>What the reports show</h2> <p class="sum svelte-1op6c6"><strong>412</strong> reports merged into #4471 (15 export rows were
+  repeats) · <strong>3</strong> problems</p> <table><thead><tr><th>problem</th><th>reports</th><th>tenants</th><th>channels</th><th>seen</th><th>ticket</th></tr></thead><tbody><!--[--><tr><td><code>parser</code></td><td>374</td><td>11</td><td class="muted svelte-1op6c6">app ×202 · email ×147 · form ×25</td><td>2026-04-01 → 2026-10-04</td><td><!--[0--><a href="https://github.com/jchatard/mega-s01e03-kb/issues/1">#1</a><!--]--></td></tr><tr><td><code>hint</code></td><td>33</td><td>3</td><td class="muted svelte-1op6c6">form ×33</td><td>2026-04-17 → 2026-09-22</td><td><!--[0--><a href="https://github.com/jchatard/mega-s01e03-kb/issues/2">#2</a><!--]--></td></tr><tr><td><code>one-day</code></td><td>5</td><td>5</td><td class="muted svelte-1op6c6">email ×3 · app ×2</td><td>2026-04-02 → 2026-10-04</td><td><!--[0--><a href="https://github.com/jchatard/mega-s01e03-kb/issues/3">#3</a><!--]--></td></tr><!--]--></tbody></table><!----> <ul><li><strong><code>parser</code></strong>: the shared parser reads dates month first; every tenant here writes the day first.
+“7 April” goes out as “4 July”. Every body that names two dates shows an exact day↔month swap.</li> <li><strong><code>hint</code></strong>: the <code>booking-v3</code> form prints <code>MM/DD/YYYY</code> under its date field but reads the value day
+first. People type what the hint says, and the form flips it. Only form reports from booking-v3
+tenants. Fixing the parser does not fix the hint. #4471’s own table marks it
+“no ticket of its own”.</li> <li><strong><code>one-day</code></strong>: the date moves by one day, not by a swap, and differs by where the reader is
+(“Lisbon got Tuesday, Toronto got Monday”). That is a time-zone bug. The desk had already noted
+these ids, then counted them under <code>parser</code> by tenant. The last one says the reporter stopped
+filing them, so this count is a floor.</li></ul> <h2>How it was counted</h2> <ul><li>One report per id: the export pages overlap, so repeated rows count once.</li> <li>Each report is placed by its tenant’s locale and booking form (<code>causes.ts</code>), not by <code>intakeTag</code>. Intake guesses from the reporter’s browser and disagrees with the tenant often.</li> <li>Reports the desk read as a one-day move (<code>desk-notes.json</code>) are their own problem
+(<code>problems.ts</code>).</li> <li>The numbers above are computed from the export at render time. When the desk merges more
+reports, the table follows; the tickets carry the count as of this page.</li></ul> <h2>For the desk</h2> <ul><li>Before you merge a report into a big ticket, read its body. A matching subject is not a
+matching bug.</li> <li>A report you footnote as “read differently” is a report that needs its own ticket.</li></ul> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-51JB-GP7W</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!--]--><!--]--><!----><!--]--><!--]--><!--]--><!----> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_1sffl87 = {
+						base: new URL("../..", location).pathname.slice(0, -1),
+						version: "1793177561409",
+						assets: "/mega-s01e03-kb"
+					};
+
+					const element = document.currentScript.parentElement;
+
+					import("../../_app/immutable/entry/start.CNkjICaV.js").then(async (kit) => {
+						kit.init(__sveltekit_1sffl87);
+						const app = await import("../../_app/immutable/entry/app.NURCjQaW.js");
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>
