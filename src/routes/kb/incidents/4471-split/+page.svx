@@ -13,7 +13,7 @@ signature: jchatard
   import RenderStamp from '#lib/kb/RenderStamp.svelte';
 
   const repo = 'https://github.com/jchatard/mega-s01e03-kb/issues';
-  const issues = { parser: `${repo}/4`, hint: `${repo}/2`, 'one-day': `${repo}/3` };
+  const issues = { parser: `${repo}/1`, hint: `${repo}/2`, 'one-day': `${repo}/3` };
 </script>
 
 [#4471](/kb/incidents/4471) says one issue, one fix queued. Its reports say otherwise. The desk
