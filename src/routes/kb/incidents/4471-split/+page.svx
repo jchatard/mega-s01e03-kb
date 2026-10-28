@@ -4,7 +4,7 @@ title: '#4471 split · three problems, three tickets'
 owner: jchatard
 status: open
 reviewed: 2026-10-28
-signature: jchatard@breek.fr
+signature: v1.eyJzdWIiOiI5NjgiLCJhdWQiOiJjaGFsbGVuZ2U6d2hhdC1pdC1zaG93cyIsImlhdCI6MTc5MzE3NzkyMSwiZXhwIjoxNzkzMjY0MzIxfQ.xgWCOGiBwLo4azqwtPnAkHWO8iaT-B2t3OiWM15mjD4
 ---
 
 <script>
