@@ -4,7 +4,7 @@ title: '#4471 split · three problems, three tickets'
 owner: jchatard
 status: open
 reviewed: 2026-10-28
-signature: jchatard
+signature: JEREMY CHATARD
 ---
 
 <script>
