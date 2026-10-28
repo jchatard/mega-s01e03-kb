@@ -39,3 +39,6 @@ Exported 2026-10-04 from the `support` repo, `apps/kb/` → `src/`.
 
 `npm install && npm run build` renders every page to `build/`. The rendered site as of the last
 commit is in `rendered/`; the #4471 split page is `rendered/kb/incidents/4471-split.html`.
+
+Live: https://jchatard.github.io/mega-s01e03-kb/kb/incidents/4471-split (GitHub Pages, branch
+`gh-pages`, built with `BASE_PATH=/mega-s01e03-kb npm run build`).

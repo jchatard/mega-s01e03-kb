@@ -15,7 +15,8 @@ export default defineConfig({
       preprocess: [vitePreprocess(), mdsvex({ extensions: ['.svx'], layout: { runbook } })],
       adapter: adapter(),
       alias: { '#lib': 'src/lib' },
-      prerender: { entries: ['/kb'], handleHttpError: 'warn' },
+      paths: { base: process.env.BASE_PATH ?? '' },
+      prerender: { entries: ['*'], handleHttpError: 'warn', handleMissingId: 'warn' },
     }),
   ],
 });
