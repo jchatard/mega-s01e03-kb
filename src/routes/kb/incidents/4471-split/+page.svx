@@ -1,0 +1,58 @@
+---
+layout: runbook
+title: '#4471 split · three problems, three tickets'
+owner: jchatard
+status: open
+reviewed: 2026-10-28
+signature: jchatard
+---
+
+<script>
+  import ProblemTable from '#lib/kb/ProblemTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+
+  const repo = 'https://github.com/jchatard/mega-s01e03-kb/issues';
+  const issues = { parser: `${repo}/1`, hint: `${repo}/2`, 'one-day': `${repo}/3` };
+</script>
+
+[#4471](/kb/incidents/4471) says one issue, one fix queued. Its reports say otherwise. The desk
+merged on subject line ([decision 0001](/kb/decisions/0001-dedupe-by-subject)), so nobody read the
+bodies. Read by what they show, they are three problems, and the queued parser fix closes only one.
+
+<Callout kind="warn">
+#4471 is not one bug. Two of these problems survive the parser fix. Each now has its own ticket.
+</Callout>
+
+## What the reports show
+
+<ProblemTable ticket={4471} {issues} />
+
+- **`parser`**: the shared parser reads dates month first; every tenant here writes the day first.
+  "7 April" goes out as "4 July". Every body that names two dates shows an exact day↔month swap.
+- **`hint`**: the `booking-v3` form prints `MM/DD/YYYY` under its date field but reads the value day
+  first. People type what the hint says, and the form flips it. Only form reports from booking-v3
+  tenants. Fixing the parser does not fix the hint. #4471's own table marks it
+  "no ticket of its own".
+- **`one-day`**: the date moves by one day, not by a swap, and differs by where the reader is
+  ("Lisbon got Tuesday, Toronto got Monday"). That is a time-zone bug. The desk had already noted
+  these ids, then counted them under `parser` by tenant. The last one says the reporter stopped
+  filing them, so this count is a floor.
+
+## How it was counted
+
+- One report per id: the export pages overlap, so repeated rows count once.
+- Each report is placed by its tenant's locale and booking form (`causes.ts`), not by
+  `intakeTag`. Intake guesses from the reporter's browser and disagrees with the tenant often.
+- Reports the desk read as a one-day move (`desk-notes.json`) are their own problem
+  (`problems.ts`).
+- The numbers above are computed from the export at render time. When the desk merges more
+  reports, the table follows; the tickets carry the count as of this page.
+
+## For the desk
+
+- Before you merge a report into a big ticket, read its body. A matching subject is not a
+  matching bug.
+- A report you footnote as "read differently" is a report that needs its own ticket.
+
+<RenderStamp {signature} />
